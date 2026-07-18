@@ -1,31 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.celebud.com" }],
+      "destination": "https://celebud.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",
-      "destination": "https://bwtrtzvlqvykobmlfjcl.supabase.co/functions/v1/Generate-sitemap"
-    },
-    {
-      "source": "/news-sitemap.xml",
-      "destination": "https://bwtrtzvlqvykobmlfjcl.supabase.co/functions/v1/Generate-sitemap?type=news"
-    },
-    {
-      "source": "/feed.xml",
-      "destination": "https://bwtrtzvlqvykobmlfjcl.supabase.co/functions/v1/Generate-sitemap?type=rss"
-    },
-    {
-      "source": "/rss.xml",
-      "destination": "https://bwtrtzvlqvykobmlfjcl.supabase.co/functions/v1/Generate-sitemap?type=rss"
-    },
-    {
-      "source": "/article/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": "(?i).*(googlebot|bingbot|yandex|duckduckbot|baiduspider|facebookexternalhit|facebookcatalog|twitterbot|linkedinbot|slackbot|discordbot|whatsapp|telegrambot|pinterest|redditbot|applebot|petalbot).*"
-        }
-      ],
-      "destination": "https://bwtrtzvlqvykobmlfjcl.supabase.co/functions/v1/Prerender?path=/article/$1"
+      "destination": "https://ucsuyrhlhmqezubfoszx.supabase.co/functions/v1/generate-sitemap"
     },
     {
       "source": "/",
@@ -33,10 +18,21 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": "(?i).*(googlebot|bingbot|yandex|duckduckbot|baiduspider|facebookexternalhit|facebookcatalog|twitterbot|linkedinbot|slackbot|discordbot|whatsapp|telegrambot|pinterest|redditbot|applebot|petalbot).*"
+          "value": ".*([Gg]ooglebot|[Bb]ingbot|[Yy]andex|[Dd]uck[Dd]uck[Bb]ot|[Bb]aiduspider|facebookexternalhit|[Ff]acebook[Cc]atalog|[Tt]witterbot|[Ll]inked[Ii]n[Bb]ot|[Ss]lack[Bb]ot|[Dd]iscordbot|[Ww]hats[Aa]pp|[Tt]elegram[Bb]ot|[Pp]interest|[Rr]edditbot|[Aa]pplebot|[Pp]etal[Bb]ot).*"
         }
       ],
-      "destination": "https://bwtrtzvlqvykobmlfjcl.supabase.co/functions/v1/Prerender?path=/"
+      "destination": "https://ucsuyrhlhmqezubfoszx.supabase.co/functions/v1/prerender?path=/"
+    },
+    {
+      "source": "/article/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*([Gg]ooglebot|[Bb]ingbot|[Yy]andex|[Dd]uck[Dd]uck[Bb]ot|[Bb]aiduspider|facebookexternalhit|[Ff]acebook[Cc]atalog|[Tt]witterbot|[Ll]inked[Ii]n[Bb]ot|[Ss]lack[Bb]ot|[Dd]iscordbot|[Ww]hats[Aa]pp|[Tt]elegram[Bb]ot|[Pp]interest|[Rr]edditbot|[Aa]pplebot|[Pp]etal[Bb]ot).*"
+        }
+      ],
+      "destination": "https://ucsuyrhlhmqezubfoszx.supabase.co/functions/v1/prerender?path=/article/:path*"
     },
     {
       "source": "/(.*)",
@@ -44,45 +40,6 @@
     }
   ],
   "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
-      ]
-    },
-    {
-      "source": "/sw.js",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/(.*)\\.html",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=86400" }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*)\\.(woff2|woff)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*)\\.(jpg|jpeg|png|webp|svg|gif)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
-      ]
-    },
     {
       "source": "/ads.txt",
       "headers": [
@@ -92,3 +49,4 @@
     }
   ]
 }
+
